@@ -3,12 +3,23 @@ version: '3'
 services:
   perros:
     build: ./perros-service
+    volumes:
+      - ./perros-service:/app
+      - /app/node_modules
 
   premios:
     build: ./premios-service
+    volumes:
+      - ./premios-service:/app
+      - /app/node_modules
+
 
   razas:
     build: ./razas-service
+    volumes:
+      - ./razas-service:/app
+      - /app/node_modules
+
 
   nginx:
     image: nginx:latest
