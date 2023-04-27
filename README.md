@@ -8,7 +8,7 @@
 docker-compose up --build
 ```
 
-## Hacer peticione
+## Hacer peticiones
 
 El servidor que está gestionando las peticiones es nginx y se apunta al host
 
