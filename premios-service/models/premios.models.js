@@ -41,8 +41,23 @@ class PremiosModel {
     return premioFound;
   }
 
-  async findByPuntaje(puntaje){
-    
+  async findByPuntaje(puntajeQuantity) {
+    const puntaje = "*".repeat(puntajeQuantity);
+    console.log(puntaje);
+    const premiosList = new Promise((resolve, reject) => {
+      this.db.all(
+        `SELECT id, id_campeon, anio_campeonato, lugar, categoria_ganada, pais_competencia, premio, puntaje FROM campeonatos WHERE puntaje = '${puntaje}'`,
+        (err, rows) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(rows);
+          }
+        }
+      );
+    });
+
+    return premiosList;
   }
 
   async findCampeonById(id) {
@@ -51,7 +66,6 @@ class PremiosModel {
 
     return perroCampeon;
   }
-
 }
 
 module.exports = PremiosModel;

@@ -63,4 +63,12 @@ router.get("/promedio-vida/:pais", async (req, res) => {
   );
 });
 
+router.get("/pais/:pais", async (req, res) => {
+  const { pais } = req.params;
+
+  const razasList = razas.findByPaisOrigen;
+  
+  return res.send(response(razasList));
+});
+
 module.exports = router;

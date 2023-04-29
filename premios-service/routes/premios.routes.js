@@ -22,9 +22,9 @@ const response = (data = [], err = false) => {
 router.get("/", async (req, res) => {
   const { pais = "", categoria = "" } = req.query;
 
-  const listaPremios = await premios.findAll(pais, categoria);
+  const premiosList = await premios.findAll(pais, categoria);
 
-  if (listaPremios.length < 1) {
+  if (premiosList.length < 1) {
     return res
       .status(404)
       .send(
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
   }
 
   logger("Get all Premios data");
-  return res.send(response(listaPremios));
+  return res.send(response(premiosList));
 });
 
 router.get("/:id", async (req, res) => {
@@ -60,10 +60,24 @@ router.get("/:id", async (req, res) => {
   );
 });
 
-router.get("/puntaje:puntaje", (req, res) => {
+router.get("/puntaje/:puntaje", async (req, res) => {
   const { puntaje } = req.params;
 
-  const premiosList = premios.getByPuntaje(puntaje);
+  const premiosList = await premios.findByPuntaje(puntaje);
+
+  if (premiosList.length < 1) {
+    return res
+      .status(404)
+      .send(
+        response(
+          `No se encontró ningun registro con el puntaje: ${puntaje}`,
+          true
+        )
+      );
+  }
+
   
+  return res.send(response(premiosList));
 });
+
 module.exports = router;
