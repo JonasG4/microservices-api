@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "cc15d7c4-2153-4dfe-931e-9dd178eef57c",
+		"name": "Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12815691"
+	},
+	"item": [
+		{
+			"name": "Perros",
+			"item": [
+				{
+					"name": "GET all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/perros",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"perros"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Premios",
+			"item": [
+				{
+					"name": "1. GET By Pais and Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/premios?pais=Estados Unidos&categoria=Competencia de carrera",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"premios"
+							],
+							"query": [
+								{
+									"key": "pais",
+									"value": "Estados Unidos"
+								},
+								{
+									"key": "categoria",
+									"value": "Competencia de carrera"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. GET by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/premios/12",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"premios",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get By Puntaje",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Razas",
+			"item": [
+				{
+					"name": "2. GET Promedio vida By pais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/razas/promedio-vida/Inglaterra",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"razas",
+								"promedio-vida",
+								"Inglaterra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. 3 tipos mas frecuentes",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
