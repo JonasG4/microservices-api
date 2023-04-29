@@ -15,4 +15,5 @@ docker-compose up --build
 ### ⌛ Incompletos
 Item 5 
 - Me tomó tiempo entender el enunciado. Me confundí con los 3 'tipos' pensé que se referia al campo tipo de la tabla razas, no encontraba como relacionar con los perros.
-- Solo listé la raza de perros más frecuente. 
+- Solo listé la raza de perros más frecuente por tiempo
+- 
