@@ -52,5 +52,15 @@ router.get("/raza/:raza", (req, res) => {
   return res.send(response(perrosList));
 });
 
+router.get("/tipos/mas-frecuentes/", (req, res) => {
+  const perrosList = perros.findAll();
+  const masFrecuentes = perrosList.reduce(
+    (acc, current) => ((acc[current.raza] = acc[current.raza] + 1 || 1), acc),
+    {}
+  );
+
+  return res.send(response(masFrecuentes))
+
+})
 
 module.exports = router;

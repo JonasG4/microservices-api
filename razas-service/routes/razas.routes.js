@@ -81,15 +81,4 @@ router.get("/pais/:pais", async (req, res) => {
   return res.send(response(razasList));
 });
 
-router.get("/tipos/mas-frecuentes", async (req, res) => {
-  const razasList = await razas.findAll();
-
-  const masFrecuentes = razasList.reduce(
-    (acc, current) => ((acc[current.tipo] = acc[current.tipo] + 1 || 1), acc),
-    {}
-  );
-
-  return res.send(response(masFrecuentes));
-});
-
 module.exports = router;
