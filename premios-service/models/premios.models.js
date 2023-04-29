@@ -66,6 +66,19 @@ class PremiosModel {
 
     return perroCampeon;
   }
+
+  async findRazaByPais(pais) {
+    const response = await axios.get(
+      `http://razas:6000/api/v1/razas/pais/${pais}`
+    );
+    const status = await response.data.status;
+    if (status == 404) {
+      return;
+    }
+
+    const listaRazas = await response.data.data;
+    return listaRazas;
+  }
 }
 
 module.exports = PremiosModel;

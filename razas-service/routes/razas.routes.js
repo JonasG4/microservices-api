@@ -9,11 +9,12 @@ const razas = new RazasModel();
 const logger = (message) => console.log(`From Razas Service: ${message}`);
 
 //Define una plantilla para las respuestas
-const response = (data = [], err = false) => {
-  const length = err === false ? data.length : 0;
+const response = (data = [], status = 200) => {
+  const length = status === 404 ? data.length : 0;
   return {
     service: "Razas",
     architecture: "microservices",
+    status: status == 200 ? 200 : status,
     length: length,
     data: data,
   };
@@ -30,7 +31,7 @@ router.get("/:id", async (req, res) => {
   const razaFound = await razas.findById(id);
 
   if (!razaFound) {
-    return res.send(response(`No se encontó nigun registro con el id ${id}`));
+    return res.send(response(`No se encontó nigun registro con el id ${id}`), 404);
   }
 
   logger("Get by id: Raza data");
@@ -66,8 +67,16 @@ router.get("/promedio-vida/:pais", async (req, res) => {
 router.get("/pais/:pais", async (req, res) => {
   const { pais } = req.params;
 
-  const razasList = razas.findByPaisOrigen;
-  
+  const razasList = await razas.findByPaisOrigen(pais);
+
+  if (razasList.length < 1) {
+    return res.send(
+      response(`No se encontó nigun registro con el pais ${pais}`, 404)
+    );
+  }
+
+  console.log(razasList);
+
   return res.send(response(razasList));
 });
 

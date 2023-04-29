@@ -76,7 +76,14 @@ router.get("/puntaje/:puntaje", async (req, res) => {
       );
   }
 
-  
+  const razasList = []
+    premiosList.forEach((premio) => {
+      const list = premios.findRazaByPais(premio.pais_competencia);
+      return list != undefined;
+    })
+
+
+  console.log(razasList);
   return res.send(response(premiosList));
 });
 

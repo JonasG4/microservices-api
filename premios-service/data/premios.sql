@@ -18,7 +18,7 @@ VALUES (1, 48, 2017, 'Primero', 'Competencia de carrera', 'Estados Unidos', 1000
        (5, 5, 2010, 'Tercero', 'Competencia de obediencia', 'Australia', 2000, '**'),
        (6, 33, 2015, 'Segundo', 'Competencia de carrera', 'Italia', 5000, '*****'),
        (7, 16, 2012, 'Primero', 'Competencia de salto de altura', 'Reino Unido', 7500, '*****'),
-       (8, 11, 2011, 'Segundo', 'Competencia de agilidad', 'Francia', 2500, '***'),
+       (8, 11, 2011, 'Segundo', 'Competencia de agilidad', 'Francia', 2500, '**'),
        (9, 63, 2021, 'Tercero', 'Competencia de belleza canina', 'Estados Unidos', 1000, '*'),
        (10, 44, 2016, 'Tercero', 'Competencia de carrera', 'España', 1500, '***'),
        (11, 1, 2009, 'Segundo', 'Competencia de obediencia', 'Australia', 2500, '***'),
