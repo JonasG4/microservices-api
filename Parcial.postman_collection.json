@@ -10,21 +10,10 @@
 			"name": "Perros",
 			"item": [
 				{
-					"name": "GET all",
+					"name": "5. 3 tipos mas frecuentes",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v1/perros",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"perros"
-							]
-						}
+						"header": []
 					},
 					"response": []
 				}
@@ -113,14 +102,6 @@
 								"Inglaterra"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "5. 3 tipos mas frecuentes",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				}
