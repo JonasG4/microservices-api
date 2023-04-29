@@ -9,11 +9,12 @@ const perros = new PerrosModel();
 const logger = (message) => console.log(`From Perros Services: ${message}`);
 
 //Define una plantilla para las respuestas
-const response = (data = [], err = false) => {
-  const length = err === false ? data.length : 0;
+const response = (data = [], status = 200) => {
+  const length = status === 200 ? data.length : 0;
   return {
     service: "Perros",
     architecture: "microservices",
+    status: status == 200 ? 200 : status,
     length: length,
     data: data,
   };
@@ -31,31 +32,25 @@ router.get("/:id", (req, res) => {
   // Si no existe un registro con el id, responderá con un not found
   if (!perroFound) {
     return res
-      .status(404)
       .send(response(`No se encontró ningun registro con el id: ${id}`, true));
   }
   logger("Get by id: Perro data");
   return res.send(response(perroFound));
 });
 
-router.get("/nombre/", (req, res) => {
-  const { min = 0, max = 9999 } = req.query;
-  const listaPerros = perros.findByPeso(min, max);
+router.get("/raza/:raza", (req, res) => {
+  const { raza } = req.params;
+  console.log("si entra aca")
+  const perrosList = perros.findByRaza(raza);
 
-  // Si no existe un registro con el id, responderá con un not found
-  if (!listaPerros) {
-    return res
-      .status(404)
-      .send(
-        response(
-          `No se encontró ningun registro con un peso entre ${min} y ${max}}`,
-          true
-        )
-      );
+  if (razasList.length < 1) {
+    return res.send(
+      response(`No se encontó nigun registro con el pais ${pais}`, 404)
+    );
   }
 
   logger("Get by peso: Perro data");
-  return res.send(response(listaPerros));
+  return res.send(response(perrosList));
 });
 
 module.exports = router;

@@ -76,8 +76,19 @@ class PremiosModel {
       return;
     }
 
-    const listaRazas = await response.data.data;
-    return listaRazas;
+    const razasList = await response.data.data;
+    return razasList;
+  }
+
+  async findPerrosByRaza(raza){
+    const response = await axios.get(`http://perros:4000/api/v1/perros/raza/${raza}`);
+    const status = await response.data.status;
+    if (status == 404) {
+      return;
+    }
+
+    const perrosList = await response.data.data;
+    return perrosList;
   }
 }
 

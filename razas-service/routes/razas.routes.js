@@ -31,7 +31,10 @@ router.get("/:id", async (req, res) => {
   const razaFound = await razas.findById(id);
 
   if (!razaFound) {
-    return res.send(response(`No se encontó nigun registro con el id ${id}`), 404);
+    return res.send(
+      response(`No se encontó nigun registro con el id ${id}`),
+      404
+    );
   }
 
   logger("Get by id: Raza data");
@@ -74,8 +77,6 @@ router.get("/pais/:pais", async (req, res) => {
       response(`No se encontó nigun registro con el pais ${pais}`, 404)
     );
   }
-
-  console.log(razasList);
 
   return res.send(response(razasList));
 });
