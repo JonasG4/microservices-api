@@ -40,10 +40,9 @@ router.get("/:id", (req, res) => {
 
 router.get("/raza/:raza", (req, res) => {
   const { raza } = req.params;
-  console.log("si entra aca")
   const perrosList = perros.findByRaza(raza);
 
-  if (razasList.length < 1) {
+  if (perrosList.length < 1) {
     return res.send(
       response(`No se encontó nigun registro con el pais ${pais}`, 404)
     );
@@ -52,5 +51,6 @@ router.get("/raza/:raza", (req, res) => {
   logger("Get by peso: Perro data");
   return res.send(response(perrosList));
 });
+
 
 module.exports = router;

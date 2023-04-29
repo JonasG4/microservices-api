@@ -77,7 +77,7 @@ router.get("/puntaje/:puntaje", async (req, res) => {
   }
 
   const razasList = [];
-  const perrosList = []
+  const perrosList = [];
   for (let i = 0; i < premiosList.length; i++) {
     const list = await premios.findRazaByPais(premiosList[i].pais_competencia);
     if (list) {
@@ -87,21 +87,23 @@ router.get("/puntaje/:puntaje", async (req, res) => {
     }
   }
 
-  console.log(razasList[1])
-      for (let i = 0; i < razasList.length; i++) {
-        const list = ;
-        if (list) {
-          list.forEach((element) => {
-            perrosList.push(element);
-          });
-        }
-      }
+  console.log(razasList[1]);
+  for (let i = 0; i < razasList.length; i++) {
+    const list = await premios.findPerrosByRaza(razasList[i].raza);
+    if (list) {
+      list.forEach((element) => {
+        perrosList.push(element);
+      });
+    }
+  }
 
-  return res.send(response({
-    puntaje: '*'.repeat(puntaje),
-    razas: razasList,
-    perros: perrosList
-  }));
+  return res.send(
+    response({
+      puntaje: "*".repeat(puntaje),
+      razas: razasList,
+      perros: perrosList,
+    })
+  );
 });
 
 module.exports = router;
