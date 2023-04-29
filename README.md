@@ -8,28 +8,11 @@
 docker-compose up --build
 ```
 
-## Hacer peticiones
+## Items
+### ✅ Completos
+1, 2, 3 y 4
 
-El servidor que está gestionando las peticiones es nginx y se apunta al host
-
-```
-http://localhost:8080
-```
-
-- Microservicio de perros
-
-```
-/api/v1/perros
-```
-
-- Microservicio de premios
-
-```
-/api/v1/premios
-```
-
-- Microservicio de razas
-
-```
-/api/v1/razas
-```
+### ⌛ Incompletos
+Item 5 
+- Me tomó tiempo entender el enunciado. 
+- Solo listé la raza de perros más frecuente. 
