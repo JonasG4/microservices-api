@@ -23,11 +23,16 @@ router.get("/", async (req, res) => {
   const { pais = "", categoria = "" } = req.query;
 
   const listaPremios = await premios.findAll(pais, categoria);
-  
-  if(listaPremios.length < 1){
+
+  if (listaPremios.length < 1) {
     return res
-    .status(404)
-    .send(response(`No se encontró ningun registro con el pais de competencia: ${pais} y la categoria ganada: ${categoria}`, true));
+      .status(404)
+      .send(
+        response(
+          `No se encontró ningun registro con el pais de competencia: ${pais} y la categoria ganada: ${categoria}`,
+          true
+        )
+      );
   }
 
   logger("Get all Premios data");
@@ -44,8 +49,21 @@ router.get("/:id", async (req, res) => {
       .send(response(`No se encontró ningun registro con el id ${id}`, true));
   }
 
+  const perroFound = await premios.findCampeonById(premioFound.id_campeon);
+
   logger("Get by id: Premio data");
-  return res.send(response(premioFound));
+  return res.send(
+    response({
+      campeonato: premioFound,
+      campeon: perroFound,
+    })
+  );
 });
 
+router.get("/puntaje:puntaje", (req, res) => {
+  const { puntaje } = req.params;
+
+  const premiosList = premios.getByPuntaje(puntaje);
+  
+});
 module.exports = router;

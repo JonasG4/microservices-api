@@ -37,13 +37,30 @@ router.get("/:id", async (req, res) => {
   return res.send(response(razaFound));
 });
 
-router.get("/expectativa-vida/promedio/:pais", (req, res) => {
+router.get("/promedio-vida/:pais", async (req, res) => {
   const { pais } = req.params;
 
-  const listaRazas = razas.findByPaisOrigen(pais);
+  const listaRazas = await razas.findByPaisOrigen(pais);
 
-  if(listaRazas.length < 0)
+  if (listaRazas.length < 0) {
+    return res
+      .status(404)
+      .send(response(`No se encontó nigun registro con el pais: ${pais}`));
+  }
+  const totalYears = listaRazas.reduce(
+    (accumulator, currentValue) =>
+      accumulator + parseInt(currentValue.expectativa_de_vida),
+    0
+  );
 
+  const average = totalYears / listaRazas.length;
+
+  return res.send(
+    response({
+      pais_origen: pais,
+      promedio_vida: average,
+    })
+  );
 });
 
 module.exports = router;
