@@ -9,7 +9,7 @@ let db = new sqlite.Database(":memory:", (err) => {
   if (err) {
     console.error(`Error al conectarse a la base de datos: ${err.message}`);
   } else {
-    console.log(`Conexión exitosa a la base datos`);
+    console.log(`Premios Service: Conexión exitosa a la base datos`);
   }
 });
 

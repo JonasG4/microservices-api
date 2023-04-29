@@ -5,10 +5,10 @@ class PremiosModel {
     this.db = data_sqlite;
   }
 
-  async findAll() {
+  async findAll(pais, categoria) {
     const listaPremios = new Promise((resolve, reject) => {
       this.db.all(
-        "SELECT id, id_campeon, anio_campeonato, lugar, categoria_ganada, pais_competencia, premio, puntaje FROM campeonatos",
+        `SELECT id, id_campeon, anio_campeonato, lugar, categoria_ganada, pais_competencia, premio, puntaje FROM campeonatos WHERE pais_competencia = '${pais}' AND categoria_ganada = '${categoria}'`, 
         (err, rows) => {
           if (err) {
             reject(err);
@@ -18,7 +18,7 @@ class PremiosModel {
         }
       );
     });
-
+    
     return listaPremios;
   }
 

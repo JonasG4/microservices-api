@@ -37,4 +37,13 @@ router.get("/:id", async (req, res) => {
   return res.send(response(razaFound));
 });
 
+router.get("/expectativa-vida/promedio/:pais", (req, res) => {
+  const { pais } = req.params;
+
+  const listaRazas = razas.findByPaisOrigen(pais);
+
+  if(listaRazas.length < 0)
+
+});
+
 module.exports = router;

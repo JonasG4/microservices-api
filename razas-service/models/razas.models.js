@@ -24,6 +24,15 @@ class RazasModel {
 
     return razaFound[0];
   }
+
+  async findByPaisOrigen(pais) {
+    const response = await this.data;
+    const listaRazas = response.filter((raza) => {
+      return raza.pais_de_origen == pais;
+    });
+    return listaRazas;
+  }
+
 }
 
 module.exports = RazasModel;

@@ -20,7 +20,15 @@ const response = (data = [], err = false) => {
 };
 
 router.get("/", async (req, res) => {
-  const listaPremios = await premios.findAll();
+  const { pais = "", categoria = "" } = req.query;
+
+  const listaPremios = await premios.findAll(pais, categoria);
+  
+  if(listaPremios.length < 1){
+    return res
+    .status(404)
+    .send(response(`No se encontró ningun registro con el pais de competencia: ${pais} y la categoria ganada: ${categoria}`, true));
+  }
 
   logger("Get all Premios data");
   return res.send(response(listaPremios));
